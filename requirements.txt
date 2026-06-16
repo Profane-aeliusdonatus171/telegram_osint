@@ -1,0 +1,9 @@
+# Core dependencies (the script also auto-installs these on first run)
+telethon>=1.43
+rich>=13.0
+
+# Optional, uncomment to enable:
+#   pyfiglet  -> ASCII-art banner
+#   cryptg    -> faster media/photo downloads
+# pyfiglet
+# cryptg
